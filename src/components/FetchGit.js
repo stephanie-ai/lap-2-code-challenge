@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class FetchGitApi extends Component {
+    
     // state = {
     //     loading: true,
     //     person: null,
