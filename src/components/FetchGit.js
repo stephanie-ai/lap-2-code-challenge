@@ -15,13 +15,13 @@ class FetchGitApi extends Component {
         
     }
 
-    render() {
-        return (
-            <div>
-            <h1> check console </h1>
-            </div>
-        )
-    }
+    // render() {
+    //     return (
+    //         <div>
+    //         <h1> check console </h1>
+    //         </div>
+    //     )
+    // }
 
 }
 

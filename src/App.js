@@ -12,7 +12,7 @@ class App extends Component {
             </header>
           <main>
               <h1>Hello World!</h1>
-              {/* <FetchGitApi /> */}
+              {/* // {<FetchGitApi />} */}
               <Home />
           </main>
           </div>
