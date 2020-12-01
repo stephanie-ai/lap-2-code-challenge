@@ -1,7 +1,5 @@
 const path = require('path');
-// const config = require('./webpack.config.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const config = require('./webpack.config.js');
 
 config.devServer = {
   historyApiFallback: true, //serve a previous page on a 404 error

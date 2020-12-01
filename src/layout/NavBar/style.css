@@ -1,3 +1,9 @@
+#navbar {
+    background-color: black;
+    color: white;
+    padding: 15px;
+}
+
 .navlink { 
     color: var(--opacity);
     margin: 0 5px;

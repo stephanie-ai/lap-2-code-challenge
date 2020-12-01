@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { NavBar } from './layout/NavBar'; 
+import { NavBar } from './layout'; 
+import  Home  from './pages/Home/index';
+// import FetchGitApi from "./components/FetchGit"
 
 class App extends Component {
     render() {
@@ -10,7 +12,8 @@ class App extends Component {
             </header>
           <main>
               <h1>Hello World!</h1>
-              
+              {/* <FetchGitApi /> */}
+              <Home />
           </main>
           </div>
       )
