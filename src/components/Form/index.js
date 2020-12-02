@@ -3,10 +3,12 @@ import './style.css';
 
 class Form extends Component {
     state = {
+        data:"",
         username: "",
         name: "",
         stars: "",
         forks: "",
+        repos: ""
     }
 
     componentDidMount() {
@@ -18,7 +20,6 @@ class Form extends Component {
     handleInputChange = (e) => {
         this.setState({
             [e.target.username]: e.target.value
-            // username
         });
     }
 
@@ -39,11 +40,15 @@ class Form extends Component {
                 this.setState({ stars: data[0].stargazers_count})
                 this.setState({ forks: data[0].forks_count })
                 this.setState({ name: data[0].name })
+                this.setState({ data: data})
                 console.log(data)
             })
     }
 
     render() {
+
+        // const renderRepos = this.state.repos.map(repo => <li key={repo.id}>Repo goes here</li>)
+
         return (
             <div>
                 <form onSubmit={this.handleFormSubmit}>
@@ -51,15 +56,12 @@ class Form extends Component {
                     <input type="submit" id="submit" value="Submit" />
                 </form>
                 <div>
-                <div class="card">
-                <img src={this.state.avatar} alt="Avatar" />
-                <div class="container">
+                <div className="card">
+                    {/* { renderRepos } */}
                   <h4>Name of Repo is: <b>{this.state.name}</b></h4>
                   <p>Number of Stargazers is: {this.state.stars}</p>
                   <p>Number of Forks is: {this.state.forks}</p>
                 </div>
-              </div> 
-                
                 </div>
               </div> 
         )
