@@ -59,7 +59,7 @@ class Form extends Component {
 
     render() {
 
-        const renderRepos = this.state.userRepos.map(repo => <li key={repo.id}>{this.userRepos}</li>)
+        const renderRepos = this.state.userRepos.map(repo => <li key={repo.id}>{repo.name}</li>)
 
         return (
             <div>
