@@ -8,8 +8,18 @@ class Form extends Component {
         name: "",
         stars: "",
         forks: "",
-        repos: ""
+        repos: "",
+        userRepos: []
     }
+
+    // fetchUserProfile = (inputValue) => {
+    //     const url = "https:api.github.com/users/ckp8/repos"
+    //         fetch(url)
+    //             .then(res => res.json())
+    //             .then(data => {
+    //             console.log(data)
+    //             this.setState({userRepos: data})
+    //             }
 
     componentDidMount() {
         console.log('did mount')
@@ -40,14 +50,16 @@ class Form extends Component {
                 this.setState({ stars: data[0].stargazers_count})
                 this.setState({ forks: data[0].forks_count })
                 this.setState({ name: data[0].name })
-                this.setState({ data: data})
-                console.log(data)
+                // this.setState({ data: data})
+                this.setState({ userRepos: data })
+                console.log(this.state.userRepos)
+                console.log("look here")
             })
     }
 
     render() {
 
-        // const renderRepos = this.state.repos.map(repo => <li key={repo.id}>Repo goes here</li>)
+        const renderRepos = this.state.userRepos.map(repo => <li key={repo.id}>{repo.name}</li>)
 
         return (
             <div>
@@ -57,7 +69,7 @@ class Form extends Component {
                 </form>
                 <div>
                 <div className="card">
-                    {/* { renderRepos } */}
+                    { renderRepos }
                   <h4>Name of Repo is: <b>{this.state.name}</b></h4>
                   <p>Number of Stargazers is: {this.state.stars}</p>
                   <p>Number of Forks is: {this.state.forks}</p>
