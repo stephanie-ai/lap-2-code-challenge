@@ -23,7 +23,7 @@ class Form extends Component {
 
     componentDidMount() {
         console.log('did mount')
-        this.fetchAPI('RishabhRawat98')
+        this.fetchAPI()
         console.log(this.fetchAPI('RishabhRawat98'))
     }
 
@@ -43,13 +43,13 @@ class Form extends Component {
     // https://api.github.com/users/:${this.state.username}/repos
     fetchAPI = () => {
         console.log('fetching from API');
-        fetch('https:api.github.com/users/RishabhRawat98/repos')
+        fetch(`https:api.github.com/users/RishabhRawat98/repos`)
             .then(resp => resp.json())
             .then(data => {
                 // this.setState({ username: data[0].name})
-                this.setState({ stars: data[0].stargazers_count})
-                this.setState({ forks: data[0].forks_count })
-                this.setState({ name: data[0].name })
+                this.setState({ stars: data.stargazers_count})
+                this.setState({ forks: data.forks_count })
+                this.setState({ name: data.name })
                 // this.setState({ data: data})
                 this.setState({ userRepos: data })
                 console.log(this.state.userRepos)
@@ -59,7 +59,13 @@ class Form extends Component {
 
     render() {
 
-        const renderRepos = this.state.userRepos.map(repo => <li key={repo.id}>{repo.name}</li>)
+        const renderRepos = this.state.userRepos.map(repo => (
+            <li key={repo.id} id="list-items">
+                Repository Name: <b>{repo.name}</b>  |
+                Stars: {repo.stars}     |
+                Forks: {repo.forks}
+            </li>
+        ))
 
         return (
             <div>
@@ -69,10 +75,8 @@ class Form extends Component {
                 </form>
                 <div>
                 <div className="card">
+                    <h3>Your Repositories</h3>
                     { renderRepos }
-                  <h4>Name of Repo is: <b>{this.state.name}</b></h4>
-                  <p>Number of Stargazers is: {this.state.stars}</p>
-                  <p>Number of Forks is: {this.state.forks}</p>
                 </div>
                 </div>
               </div> 
