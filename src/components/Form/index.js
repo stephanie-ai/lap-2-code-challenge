@@ -11,28 +11,23 @@ class Form extends Component {
     }
 
     componentDidMount() {
-        console.log('did mount')
         this.fetchAPI()
-        console.log(this.fetchAPI('RishabhRawat98'))
     }
 
     handleInputChange = (e) => {
         this.setState({
-            [e.target.username]: e.target.value
+            [e.target.name]: e.target.value
         });
     }
 
     handleFormSubmit = e => {
         e.preventDefault();
-        const data = this.state
-        console.log('Final data is ', data)
+        this.fetchAPI(this.state.username)
     }
 
-    // https:api.github.com/users/RishabhRawat98
-    // https://api.github.com/users/:${this.state.username}/repos
-    fetchAPI = () => {
+    fetchAPI = (username) => {
         console.log('fetching from API');
-        fetch(`https:api.github.com/users/RishabhRawat98/repos`)
+        fetch(`https:api.github.com/users/${username}/repos`)
             .then(resp => resp.json())
             .then(data => {
                 this.setState({ stars: data.stargazers_count})
@@ -40,7 +35,6 @@ class Form extends Component {
                 this.setState({ name: data.name })
                 this.setState({ userRepos: data })
                 console.log(this.state.userRepos)
-                console.log("look here")
             })
     }
 
@@ -57,7 +51,7 @@ class Form extends Component {
         return (
             <div>
                 <form onSubmit={this.handleFormSubmit}>
-                    <input type="text" id="username" name="username" placeholder="What is your Username?" onChange={this.handleInputChange} />
+                    <input type="text" id="username" name="username" placeholder="What is your Username?" value={this.state.username} onChange={this.handleInputChange} />
                     <input type="submit" id="submit" value="Submit" />
                 </form>
                 <div>
@@ -72,5 +66,3 @@ class Form extends Component {
 }
 
 export default Form;
-
-// value={this.state.username}
