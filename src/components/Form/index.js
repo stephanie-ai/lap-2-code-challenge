@@ -3,23 +3,12 @@ import './style.css';
 
 class Form extends Component {
     state = {
-        data:"",
         username: "",
         name: "",
         stars: "",
         forks: "",
-        repos: "",
         userRepos: []
     }
-
-    // fetchUserProfile = (inputValue) => {
-    //     const url = "https:api.github.com/users/ckp8/repos"
-    //         fetch(url)
-    //             .then(res => res.json())
-    //             .then(data => {
-    //             console.log(data)
-    //             this.setState({userRepos: data})
-    //             }
 
     componentDidMount() {
         console.log('did mount')
@@ -46,11 +35,9 @@ class Form extends Component {
         fetch(`https:api.github.com/users/RishabhRawat98/repos`)
             .then(resp => resp.json())
             .then(data => {
-                // this.setState({ username: data[0].name})
                 this.setState({ stars: data.stargazers_count})
                 this.setState({ forks: data.forks_count })
                 this.setState({ name: data.name })
-                // this.setState({ data: data})
                 this.setState({ userRepos: data })
                 console.log(this.state.userRepos)
                 console.log("look here")
