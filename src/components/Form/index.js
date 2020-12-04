@@ -10,10 +10,6 @@ class Form extends Component {
         userRepos: []
     }
 
-    componentDidMount() {
-        this.fetchAPI()
-    }
-
     handleInputChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -23,6 +19,7 @@ class Form extends Component {
     handleFormSubmit = e => {
         e.preventDefault();
         this.fetchAPI(this.state.username)
+        this.setState({ username: ""})
     }
 
     fetchAPI = (username) => {
